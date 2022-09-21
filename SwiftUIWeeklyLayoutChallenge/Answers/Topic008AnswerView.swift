@@ -48,6 +48,7 @@ public struct Topic008AnswerView: View {
                 }
                 .labelStyle(.verticallyCentered)
             }
+            .listStyle(.inset)
             .navigationTitle("App")
         }
     }
