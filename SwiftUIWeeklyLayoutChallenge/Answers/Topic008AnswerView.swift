@@ -42,7 +42,9 @@ public struct Topic008AnswerView: View {
                         .buttonBorderShape(.capsule)
                     }
                 } icon: {
-                    // TODO: Show app.thumbnail
+                    app.thumbnail
+                        .frame(width: 60, height: 60)
+                        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                 }
             }
             .navigationTitle("App")
