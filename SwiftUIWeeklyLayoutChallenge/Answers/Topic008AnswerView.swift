@@ -9,35 +9,41 @@ import SwiftUI
 
 /// <doc:Topic008>
 public struct Topic008AnswerView: View {
-    public init() {}
+    
+    private let applications: [Topic008.Application]
+    
+    public init(applications: [Topic008.Application]) {
+        self.applications = applications
+    }
     
     public var body: some View {
         Text("Code your layout here!")
     }
 }
 
+@available(iOS 15, *)
 struct Topic008AnswerView_Previews: PreviewProvider {
     static var previews: some View {
-        Topic008AnswerView()
+        Topic008AnswerView(applications: Topic008.Application.samples)
     }
 }
 
 // MARK: - Sample data -
 
-enum Topic008 {
+public enum Topic008 {
 
-    struct Application: Identifiable {
-        let id = UUID()
-        let thumbnail: Color
-        let name: String
-        let subtitle: String
+    public struct Application: Identifiable {
+        public let id = UUID()
+        public let thumbnail: Color
+        public let name: String
+        public let subtitle: String
     }
 }
 
 extension Topic008.Application {
     
     @available(iOS 15, *)
-    static let samples: [Self] = [
+    public static let samples: [Self] = [
         .init(thumbnail: .orange,
               name: "App Name 1",
               subtitle: "Subtitle 1"),
