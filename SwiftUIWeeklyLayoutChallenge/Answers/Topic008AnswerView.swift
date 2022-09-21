@@ -46,11 +46,32 @@ public struct Topic008AnswerView: View {
                         .frame(width: 60, height: 60)
                         .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                 }
+                .labelStyle(.verticallyCentered)
             }
             .navigationTitle("App")
         }
     }
 }
+
+// MARK: - VerticallyCenteredLabelStyle -
+
+@available(iOS 15, *)
+struct VerticallyCenteredLabelStyle: LabelStyle {
+    
+    func makeBody(configuration: Configuration) -> some View {
+        HStack {
+            configuration.icon
+            configuration.title
+        }
+    }
+}
+
+@available(iOS 15, *)
+extension LabelStyle where Self == VerticallyCenteredLabelStyle {
+    static var verticallyCentered: Self { .init() }
+}
+
+// MARK: - Preview -
 
 @available(iOS 15, *)
 struct Topic008AnswerView_Previews: PreviewProvider {
