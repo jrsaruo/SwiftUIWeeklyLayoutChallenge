@@ -8,6 +8,7 @@
 import SwiftUI
 
 /// <doc:Topic008>
+@available(iOS 15, *)
 public struct Topic008AnswerView: View {
     
     private let applications: [Topic008.Application]
@@ -17,7 +18,35 @@ public struct Topic008AnswerView: View {
     }
     
     public var body: some View {
-        Text("Code your layout here!")
+        NavigationView {
+            List(applications) { app in
+                Label {
+                    HStack {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(app.name)
+                                .lineLimit(2)
+                            Text(app.subtitle)
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                                .lineLimit(1)
+                        }
+                        Spacer()
+                        Button {
+                            print("アプリを入手")
+                        } label: {
+                            Text("入手")
+                                .bold()
+                                .padding([.leading, .trailing], 8)
+                        }
+                        .buttonStyle(.bordered)
+                        .buttonBorderShape(.capsule)
+                    }
+                } icon: {
+                    // TODO: Show app.thumbnail
+                }
+            }
+            .navigationTitle("App")
+        }
     }
 }
 
