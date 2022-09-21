@@ -20,37 +20,41 @@ public struct Topic008AnswerView: View {
     public var body: some View {
         NavigationView {
             List(applications) { app in
-                Label {
-                    HStack {
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(app.name)
-                                .lineLimit(2)
-                            Text(app.subtitle)
-                                .font(.caption)
-                                .foregroundColor(.secondary)
-                                .lineLimit(1)
-                        }
-                        Spacer()
-                        Button {
-                            print("アプリを入手")
-                        } label: {
-                            Text("入手")
-                                .bold()
-                                .padding([.leading, .trailing], 8)
-                        }
-                        .buttonStyle(.bordered)
-                        .buttonBorderShape(.capsule)
-                    }
-                } icon: {
-                    app.thumbnail
-                        .frame(width: 60, height: 60)
-                        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                }
-                .labelStyle(.verticallyCentered)
+                applicationRow(for: app)
             }
             .listStyle(.inset)
             .navigationTitle("App")
         }
+    }
+    
+    private func applicationRow(for application: Topic008.Application) -> some View {
+        Label {
+            HStack {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(application.name)
+                        .lineLimit(2)
+                    Text(application.subtitle)
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                        .lineLimit(1)
+                }
+                Spacer()
+                Button {
+                    print("アプリを入手")
+                } label: {
+                    Text("入手")
+                        .bold()
+                        .padding([.leading, .trailing], 8)
+                }
+                .buttonStyle(.bordered)
+                .buttonBorderShape(.capsule)
+            }
+        } icon: {
+            application.thumbnail
+                .frame(width: 60, height: 60)
+                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        }
+        .labelStyle(.verticallyCentered)
     }
 }
 
