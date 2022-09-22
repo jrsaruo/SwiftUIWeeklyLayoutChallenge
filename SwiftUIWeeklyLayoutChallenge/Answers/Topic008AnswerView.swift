@@ -32,11 +32,11 @@ public struct Topic008AnswerView: View {
     private func applicationRow(for application: Topic008.Application) -> some View {
         Label {
             HStack {
-                VStack(alignment: .leading, spacing: 4) {
+                VStack(alignment: .leading, spacing: 5) {
                     Text(application.name)
                         .lineLimit(2)
                     Text(application.subtitle)
-                        .font(.caption)
+                        .font(.footnote)
                         .foregroundColor(.secondary)
                         .lineLimit(1)
                 }
@@ -53,8 +53,8 @@ public struct Topic008AnswerView: View {
             }
         } icon: {
             application.thumbnail
-                .frame(width: 60, height: 60)
-                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                .frame(width: 64, height: 64)
+                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         }
         .labelStyle(.verticallyCentered)
     }
@@ -73,6 +73,7 @@ struct ListRowSeparatorTrailingInsetModifier: ViewModifier {
         } else {
             // FIXME: iOS 15 style
             content
+                .padding([.top, .bottom], 4)
         }
     }
 }
