@@ -22,6 +22,7 @@ public struct Topic008AnswerView: View {
             List(applications) { app in
                 applicationRow(for: app)
                     .listSectionSeparator(.hidden)
+                    .modifier(ListRowSeparatorTrailingInsetModifier())
             }
             .listStyle(.inset)
             .navigationTitle("App")
@@ -56,6 +57,23 @@ public struct Topic008AnswerView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
         }
         .labelStyle(.verticallyCentered)
+    }
+}
+
+// MARK: - ListRowSeparatorTrailingInsetModifier -
+
+struct ListRowSeparatorTrailingInsetModifier: ViewModifier {
+    
+    func body(content: Content) -> some View {
+        if #available(iOS 16, *) {
+            content
+                .alignmentGuide(.listRowSeparatorTrailing) { dimensions in
+                    dimensions[.trailing]
+                }
+        } else {
+            // FIXME: iOS 15 style
+            content
+        }
     }
 }
 
