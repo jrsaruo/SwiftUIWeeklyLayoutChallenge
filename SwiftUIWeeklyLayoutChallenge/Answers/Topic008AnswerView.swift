@@ -21,6 +21,7 @@ public struct Topic008AnswerView: View {
         NavigationView {
             List(applications) { app in
                 applicationRow(for: app)
+                    .listSectionSeparator(.hidden)
             }
             .listStyle(.inset)
             .navigationTitle("App")
